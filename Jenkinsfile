@@ -13,6 +13,13 @@ pipeline{
        stage('Build'){
             steps{
                 sh 'mvn clean package'
+	    }
+        } 
+        stage('Test') {
+            
+            steps {
+                withSonarQubeEnv('Sonar-Server-9.9'){  
+                    sh "mvn sonar:sonar"    
             }
          }       
     }
