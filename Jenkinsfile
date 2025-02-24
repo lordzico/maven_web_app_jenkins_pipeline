@@ -14,9 +14,8 @@ pipeline{
             steps{
                 sh 'mvn clean package'
 	    }
-        } 
-        stage('Test') {
-            
+         } 
+        stage('Code Check') {
             steps {
                 withSonarQubeEnv('Sonar-Server-9.9'){  
                     sh "mvn sonar:sonar"    
